@@ -1,0 +1,211 @@
+//variables
+$color-primary: #888;
+$bg-list-hover: rgb(253, 114, 0);
+$color-black: #000;
+
+//Breakpoints
+$breakpoints: (
+    mobile: 375px,
+    tablet: 768px,
+    desktop: 1024px
+);
+
+//mixins 
+
+//responsive tablet
+@mixin tablet-only {
+    @media screen and (min-width: map-get($breakpoints, tablet)) {
+       @content; 
+    }
+}
+
+//responsive desktop
+@mixin desktop-only {
+    @media screen and (min-width: map-get($breakpoints, desktop)) {
+        @content;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+    color: $color-primary;
+    font-family: 'Khmer UI', sans-serif;
+
+    @include desktop-only {
+        padding: 10px 100px;
+    }
+}
+
+.container {
+    padding: 20px;
+}
+
+//barre de navigation
+.nav {
+    display: grid;
+    grid-template-columns: repeat(2, 6fr);
+
+    @include tablet-only {
+        display: grid;
+        grid-template-columns: repeat(3, 2fr);
+    }
+
+    //button menu responsive
+    &__menu__btn {
+        outline: none;
+        justify-self: end;
+        @include tablet-only {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+    }
+
+    //all list item
+    &__item {
+        list-style-type: none;
+        padding: 10px 0;
+        text-align: center;
+        @include tablet-only {
+            display: block;
+            margin-left: 30px;
+        }
+
+    }
+
+    &__item:hover {
+        background-color: $bg-list-hover;
+        color: $color-black;
+        font-weight: 600;
+        padding: 10px;
+        border-radius: 5px;
+        
+        @include tablet-only {
+            display: inline-block;
+            height: 35px;
+        }
+    }
+
+    //all links
+    &__link {
+        color: inherit;   
+        text-decoration: none;
+        outline: none;
+    }
+
+    //balise qui englobe tous les liens de nav
+    &__navbar {
+        grid-column: span 6;
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: opacity 1s;
+
+        @include tablet-only {
+            grid-column: none;
+            justify-self: end;
+            display: flex;
+        }
+    }
+}
+
+//class qui permet de cacher le menu (menu boutton responsive)
+.hidden {
+    padding: 0;
+    margin: 0;
+    height: 0;
+    opacity: 0;
+    transition: opacity 1s;
+    @include tablet-only {
+            opacity: 1;
+    }
+}
+
+.body {
+
+    &__article {
+        padding: 30px 0;
+    }
+
+    &__img {
+        display: inline-block;
+        width: 100%;
+    }
+
+    &__title {
+        line-height: 2.5rem;
+        color: $color-black;
+        font-size: 2rem;
+        font-weight: 700;
+        padding: 20px 0;
+    }
+
+    &__paragraphe {
+        padding-bottom: 20px;
+        line-height: 1.5rem;
+    }
+
+    .avatar {
+        display: flex;
+
+        img {
+            width: 50px;
+            height: 50px;
+        }
+
+        &__id {
+            padding: 6px 0 0 20px;
+        }
+        h4 {
+            color: $color-black;
+            font-weight: 700;
+            padding-bottom: 5px;
+        }
+    }
+
+    //screen and desktop
+    @include desktop-only {
+        padding-bottom: 50px;
+        display: grid;
+        grid-template-rows: 300px 2fr;
+        grid-template-columns: repeat(3, 2fr);
+        grid-gap: 40px;
+
+        &__bloc1 {
+            grid-column: span 3;
+            display: grid;
+            grid-template-columns: 4fr 7fr;
+            grid-column-gap: 60px;
+
+            &--img {
+                display: block;
+                width: 358px;
+                height: 220px;
+                position: relative;
+                top: 20px;
+            }
+
+        }
+    }
+}
+
+.footer {
+    @include tablet-only {
+        display: flex;
+        
+        &__copyright {
+            margin-top: 7px;
+            margin-left: auto;
+        }
+    }
+
+    div {
+        padding: 10px 0;
+    }
+}
