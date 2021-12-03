@@ -72,6 +72,7 @@ body {
         list-style-type: none;
         padding: 10px 0;
         text-align: center;
+        transition: background-color 300ms;
         @include tablet-only {
             display: block;
             margin-left: 30px;
@@ -105,7 +106,7 @@ body {
         padding: 0;
         margin: 0;
         opacity: 1;
-        transition: opacity 1s;
+        transition: opacity 500ms;
 
         @include tablet-only {
             grid-column: none;
@@ -121,7 +122,8 @@ body {
     margin: 0;
     height: 0;
     opacity: 0;
-    transition: opacity 1s;
+    transition: opacity 500ms;
+
     @include tablet-only {
             opacity: 1;
     }
