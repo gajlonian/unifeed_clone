@@ -106,7 +106,7 @@ body {
         padding: 0;
         margin: 0;
         opacity: 1;
-        transition: opacity 500ms;
+        transition: opacity 400ms;
 
         @include tablet-only {
             grid-column: none;
@@ -122,7 +122,6 @@ body {
     margin: 0;
     height: 0;
     opacity: 0;
-    transition: opacity 500ms;
 
     @include tablet-only {
             opacity: 1;
